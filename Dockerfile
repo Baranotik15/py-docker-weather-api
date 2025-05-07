@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app /weather_app/
 
-CMD ["python", "app/main.py"]
+CMD ["python", "weather_app/app/main.py"]
