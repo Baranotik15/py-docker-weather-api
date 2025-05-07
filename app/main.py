@@ -10,7 +10,8 @@ load_dotenv()
 def get_weather() -> None:
     api_key = os.getenv("API_KEY")
     location = os.getenv("LOCATION")
-    url = f"http://api.weatherapi.com/v1/current.json?key={api_key}&q={location}&aqi=no"
+    url = (f"http://api.weatherapi.com/v1/"  # noqa: E231
+           f"current.json?key={api_key}&q={location}&aqi=no")
 
     try:
         response = requests.get(url)
@@ -22,14 +23,15 @@ def get_weather() -> None:
         temp_c = data["current"]["temp_c"]
         condition = data["current"]["condition"]["text"]
 
-        print(f"Weather in {location_name}, {country}:")
+        print(f"Weather in {location_name}, {country}:")  # noqa: E231
         print(f"Temperature: {temp_c}°C")
         print(f"Condition: {condition}")
 
     except requests.RequestException as e:
         print(f"Request error: {e}")
     except KeyError:
-        print("Error parsing data. Possibly an invalid API key or unexpected response format.")
+        print("Error parsing data. "
+              "Possibly an invalid API key or unexpected response format.")
 
 
 if __name__ == "__main__":
