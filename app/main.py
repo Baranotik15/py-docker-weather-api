@@ -10,8 +10,19 @@ load_dotenv()
 def get_weather() -> None:
     api_key = os.getenv("API_KEY")
     location = os.getenv("LOCATION")
+
+    if not api_key:
+        print("Error: environment variable API_KEY is missing.")
+        exit(1)
+
+    if not location:
+        print("Error: environment variable LOCATION is missing.")
+        exit(1)
+
     url = (f"http://api.weatherapi.com/v1/"  # noqa: E231
            f"current.json?key={api_key}&q={location}&aqi=no")
+
+
 
     try:
         response = requests.get(url)
