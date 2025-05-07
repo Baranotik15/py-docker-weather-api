@@ -22,8 +22,6 @@ def get_weather() -> None:
     url = (f"http://api.weatherapi.com/v1/"  # noqa: E231
            f"current.json?key={api_key}&q={location}&aqi=no")
 
-
-
     try:
         response = requests.get(url)
         response.raise_for_status()
